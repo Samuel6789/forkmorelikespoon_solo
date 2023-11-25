@@ -1,6 +1,6 @@
 from __future__ import annotations
 from typing import List
-
+from enum import Enum
 
 class Points:
     _value: int
@@ -28,6 +28,10 @@ class Tile:
 
     def __str__(self) -> str:
         return self._representation
+    
+    def __repr__(self) -> str:
+        return self.__str__()
+
 
 
 STARTING_PLAYER: Tile = Tile("S")
