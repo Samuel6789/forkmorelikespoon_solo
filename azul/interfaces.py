@@ -15,3 +15,13 @@ class wallLinePutTileInterface:
 class tableCenterAddInterface:
     def add(self, tiles: list[Tile]):
         pass
+
+class bagState:
+    def __init__(self) -> None:
+        self.tiles = []
+    
+    def fakeAdd(self, tiles: list[Tile]) -> None:
+        self.tiles += tiles
+    
+    def state(self):
+        return "".join([str(x) for x in self.tiles])
