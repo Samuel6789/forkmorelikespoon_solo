@@ -15,6 +15,8 @@ class TileSource:
         mapColours: dict = {1 : "R", 2 : "B", 3 : "Y", 4 : "G", 5 : "L"}
         i: int = 0
         while i < len(self.tiles):
+            if colour < 0: 
+                return []
             if mapColours[colour] == self.tiles[i].__str__():
                 result.append(self.tiles.pop(i))
             else:
@@ -38,6 +40,8 @@ class tableCenter(TileSource):
         mapColours: dict = {0 : "S", 1 : "R", 2 : "B", 3 : "Y", 4 : "G", 5 : "L"}
         i: int = 0
         while i < len(self.tiles):
+            if colour < 0: 
+                return []
             if self.tiles[i].__str__() == mapColours[colour] or self.tiles[i].__str__() == "S":
                 result.append(self.tiles.pop(i))
             else:
