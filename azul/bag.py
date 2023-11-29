@@ -2,9 +2,11 @@ from __future__ import annotations
 from typing import List
 from simple_types import Tile, compress_tile_list, Points, RED, BLUE, YELLOW, GREEN, BLACK
 import random
+from usedTiles import usedTiles
 
 class Bag:
-    def __init__(self) -> None:
+    def __init__(self, used: usedTiles) -> None:
+        self.used = used
         self.tileCount: int = 100
         self.tiles: list[Tile] = []
         for i in range(20):
@@ -19,6 +21,9 @@ class Bag:
         return "".join([str(x) for x in self.tiles])
     
     def take(self, count: int) -> list[Tile]:
+        if self.tiles == []:
+            self.tiles = self.used.takeAll()
+            self.tileCount = len(self.tiles)
         if count < 0 or count > self.tileCount:
             return []
         result: list[Tile] = []

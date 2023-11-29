@@ -5,10 +5,11 @@ from azul.simple_types import Tile, STARTING_PLAYER, RED, GREEN, Points
 from azul.bag import Bag
 from azul.tableArea import TableArea
 from azul.factory import Factory
+from azul.usedTiles import usedTiles
 
 class testTableArea(unittest.TestCase):
     def setUp(self) -> None:
-        self.bag: Bag = Bag()
+        self.bag: Bag = Bag(usedTiles())
         self.table: TableArea = TableArea(2, self.bag)
 
     def test_TableArea(self) -> None:
