@@ -3,13 +3,14 @@ from typing import List
 from tileSources import tableCenter
 from factory import Factory
 from simple_types import Tile
+from bag import Bag
 
 class TableArea:
     def __init__(self, numOfPlayers: int, bag: Bag):
-        table_Center: tableCenter = tableCenter()
+        self.tableCenter: tableCenter = tableCenter()
         self.factories: List[Factory] = list()
         for i in range (1 + numOfPlayers*2):
-            self.factories.append(Factory(bag, tableCenter))
+            self.factories.append(Factory(bag, self.tableCenter))
 
     def take(self, sourceIdx: int, colour: int) -> List[Tile]:
         if sourceIdx >= len(self.factories):
@@ -22,9 +23,6 @@ class TableArea:
         return all(factory.isEmpty() for factory in self.factories) and self.tableCenter.isEmpty()
 
     def startNewRound(self):
-        if not self.isRoundEnd():
-            raise Exception("Cannot start a new round before the current one has ended")
-        
         for factory in self.factories:
             factory.startNewRound()
 
