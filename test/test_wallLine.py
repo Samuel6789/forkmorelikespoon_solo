@@ -2,7 +2,7 @@ from __future__ import annotations
 import unittest
 from typing import List, Optional
 from azul.simple_types import Tile, STARTING_PLAYER, RED, BLUE, YELLOW, GREEN, BLACK, Points
-from azul.wall_line import WallLine
+from azul.wallLine import WallLine
 
 class TestWallLine(unittest.TestCase):
     def setUp(self) -> None:
