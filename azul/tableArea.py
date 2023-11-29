@@ -5,10 +5,11 @@ from factory import Factory
 from simple_types import Tile
 
 class TableArea:
-    def __init__(self, factories: List[Factory], tableCenter: tableCenter) -> None:
-        self.factories = factories
-        self.tableCenter = tableCenter
-        self.roundEnded = False
+    def __init__(self, numOfPlayers: int, bag: Bag):
+        table_Center: tableCenter = tableCenter()
+        self.factories: List[Factory] = list()
+        for i in range (1 + numOfPlayers*2):
+            self.factories.append(Factory(bag, tableCenter))
 
     def take(self, sourceIdx: int, colour: int) -> List[Tile]:
         if sourceIdx >= len(self.factories):
@@ -26,7 +27,6 @@ class TableArea:
         
         for factory in self.factories:
             factory.startNewRound()
-        self.roundEnded = False
 
     def state(self) -> str:
         factories_state = ' '.join([f.state() for f in self.factories])
