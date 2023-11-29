@@ -1,10 +1,14 @@
 from __future__ import annotations
 import unittest
 from azul.bag import Bag
+from azul.usedTiles import usedTiles
+from azul.simple_types import RED
 
 class testBag(unittest.TestCase):
     def setUp(self) -> None:
-        self.bag: Bag = Bag()
+        self.used: usedTiles = usedTiles()
+        self.used.tiles = [RED]
+        self.bag: Bag = Bag(self.used)
 
     def test_bag(self) -> None:
         self.assertTrue(len(self.bag.state()) == 100)
@@ -26,7 +30,7 @@ class testBag(unittest.TestCase):
         self.assertEqual(self.bag.state(), "")
         self.assertTrue(self.bag.tileCount == 0)
         ##Is the bag empty If we take all 
-        self.assertEqual(self.bag.take(1), [])
+        self.assertEqual(self.bag.take(1), [RED])
         ##Take from a empty bag 
         
 
