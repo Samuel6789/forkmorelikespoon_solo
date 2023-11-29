@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import List, Set
+from typing import List
 from azul.simple_types import Tile
 
 
