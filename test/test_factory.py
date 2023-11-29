@@ -1,14 +1,14 @@
 from __future__ import annotations
 import unittest
-from factory import Factory
-from bag import Bag
-from interfaces import tableCenterAddInterface
-from simple_types import RED, BLUE, YELLOW, GREEN, BLACK
+from azul.factory import Factory
+from azul.bag import Bag
+from azul.tileSources import tableCenter
+from azul.simple_types import RED, BLUE, YELLOW, GREEN, BLACK
 
 class testFactory(unittest.TestCase):
     def setUp(self) -> None:
         self.bag: Bag = Bag()
-        self.center: tableCenterAddInterface = tableCenterAddInterface()
+        self.center: tableCenter = tableCenter()
         self.factory: Factory = Factory(self.bag, self.center)
 
 

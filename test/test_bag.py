@@ -1,6 +1,6 @@
 from __future__ import annotations
 import unittest
-from bag import Bag
+from azul.bag import Bag
 
 class testBag(unittest.TestCase):
     def setUp(self) -> None:
