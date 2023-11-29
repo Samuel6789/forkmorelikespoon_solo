@@ -2,8 +2,8 @@ from __future__ import annotations
 from typing import List
 from simple_types import Tile, compress_tile_list, Points, RED, BLUE, YELLOW, GREEN, BLACK
 from bag import Bag
-from tileSources import TileSource
-from tileSources import tableCenter
+from azul.tileSources import TileSource
+from azul.tileSources import tableCenter
 
 
 class Factory(TileSource):
@@ -16,7 +16,7 @@ class Factory(TileSource):
         self.tiles += self.bag.take(4)
     
     def take(self, colour: int) -> list[Tile]:
-        result: list[Tile] = super().take(colour)
+        result: List[Tile] = super().take(colour)
         if result == []:
             return result
         self.center.add(self.tiles)

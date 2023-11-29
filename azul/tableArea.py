@@ -6,7 +6,7 @@ from simple_types import Tile
 from bag import Bag
 
 class TableArea:
-    def __init__(self, numOfPlayers: int, bag: Bag):
+    def __init__(self, numOfPlayers: int, bag: Bag) -> None:
         self.tableCenter: tableCenter = tableCenter()
         self.factories: List[Factory] = list()
         for i in range (1 + numOfPlayers*2):
@@ -22,11 +22,11 @@ class TableArea:
     def isRoundEnd(self) -> bool:
         return all(factory.isEmpty() for factory in self.factories) and self.tableCenter.isEmpty()
 
-    def startNewRound(self):
+    def startNewRound(self) -> None:
         for factory in self.factories:
             factory.startNewRound()
 
     def state(self) -> str:
-        factories_state = ' '.join([f.state() for f in self.factories])
-        center_state = self.tableCenter.state()
+        factories_state: str = ' '.join([f.state() for f in self.factories])
+        center_state: str = self.tableCenter.state()
         return f"Factories: {factories_state} | Center: {center_state}"

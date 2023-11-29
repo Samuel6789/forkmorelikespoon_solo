@@ -6,9 +6,9 @@ from usedTiles import usedTiles
 
 class Bag:
     def __init__(self, used: usedTiles) -> None:
-        self.used = used
+        self.used: usedTiles = used
         self.tileCount: int = 100
-        self.tiles: list[Tile] = []
+        self.tiles: List[Tile] = []
         for i in range(20):
             self.tiles.append(RED)
             self.tiles.append(BLUE)
@@ -26,7 +26,7 @@ class Bag:
             self.tileCount = len(self.tiles)
         if count < 0 or count > self.tileCount:
             return []
-        result: list[Tile] = []
+        result: List[Tile] = []
         for i in range(count):
             self.tileCount -= 1
             result.append(self.tiles.pop(0))
