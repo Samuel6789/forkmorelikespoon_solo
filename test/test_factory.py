@@ -1,0 +1,34 @@
+from __future__ import annotations
+import unittest
+from factory import Factory
+from bag import Bag
+from interfaces import tableCenterAddInterface
+from simple_types import RED, BLUE, YELLOW, GREEN, BLACK
+
+class testFactory(unittest.TestCase):
+    def setUp(self) -> None:
+        self.bag: Bag = Bag()
+        self.center: tableCenterAddInterface = tableCenterAddInterface()
+        self.factory: Factory = Factory(self.bag, self.center)
+
+
+    def test_factory(self) -> None:
+        self.assertTrue(self.factory.isEmpty)
+        self.assertTrue(self.factory.state() == "")
+        ##Empty at the begining 
+        self.factory.startNewRound()
+        self.assertTrue(len(self.factory.state()) == 4)
+        self.factory.tiles = [RED, RED, BLUE, BLUE]
+        ##Start of round
+        self.assertEqual(self.factory.take(5), [])
+        ##Take non-existent
+        self.assertEqual(self.factory.take(1), [RED, RED])
+        ##Take existing
+        self.assertEqual(self.factory.state(), "")
+        ##Check state after succesful take
+        self.assertEqual(self.factory.take(1), [])
+        ##Take from empty 
+
+
+if __name__ == '__main__':
+    unittest.main()
