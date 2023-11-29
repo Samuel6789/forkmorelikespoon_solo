@@ -1,6 +1,4 @@
 from __future__ import annotations
-from typing import List
-from interfaces import UsedTilesGiveInterface
 from simple_types import Tile, compress_tile_list, Points, RED, BLUE, YELLOW, GREEN, BLACK, STARTING_PLAYER
 
 class TileSource:
