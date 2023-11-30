@@ -7,7 +7,7 @@ class FinalPointsCalculation:
     @staticmethod
     def calculate_points(wall: List[List[Any]]):
         points: int = 0
-        colours_counter: Counter = Counter()
+        colours_counter: Counter[str] = Counter()
         for row in wall:
             row: List[str] = list(filter(lambda x: x is not None, row))
             row: List[str] = list(map(lambda x: str(x), row))
