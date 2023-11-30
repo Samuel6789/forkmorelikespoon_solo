@@ -1,32 +1,33 @@
 from __future__ import annotations
-from typing import List
-from simple_types import Tile
-from simple_types import Points
+from typing import List, Set, Any
+from simple_types import Tile, Points
 from enum import Enum
 
-class UsedTilesGiveInterface:
-    def give(self, tiles: List[Tile]) -> None:
-        pass
 
-class wallLinePutTileInterface:
-    def putTile(self, tile: Tile) -> Points:
-        pointInterface: Points = Points(1)
-        return pointInterface
+class GameInterface:
+    ''''''
 
-class tableCenterAddInterface:
-    def add(self, tiles: list[Tile]):
-        pass
-
-class bagState:
     def __init__(self) -> None:
-        self.tiles = []
-    
-    def fakeAdd(self, tiles: list[Tile]) -> None:
-        self.tiles += tiles
-    
-    def state(self):
-        return "".join([str(x) for x in self.tiles])
-    
+        pass
+
+class ObserverInterface:
+    '''perposiela observerom state z board-u'''
+    def __init__(self) -> None:
+        '''prepares GUI in a GUI implementation'''
+        self._observers: Set[str] = set()
+        pass
+
+    def notify(self, newState:str) -> None:
+        '''in a GUI implementation this would pop up a window with a message'''
+        print(f"new state is: {newState}")
+
+    def registerObserver(self, name: str) -> None:
+        self._observers.add(name)
+
+    def cancelObserver(self, name: str) -> None:
+        self._observers.remove(name)
+
+
 class FinishRoundResult(Enum):
     NORMAL = True
     GAME_FINISHED = False
