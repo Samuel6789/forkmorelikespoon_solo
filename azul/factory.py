@@ -2,8 +2,8 @@ from __future__ import annotations
 from typing import List
 from simple_types import Tile, compress_tile_list, Points, RED, BLUE, YELLOW, GREEN, BLACK
 from bag import Bag
-from azul.tileSources import TileSource
-from azul.tileSources import tableCenter
+from tileSources import TileSource
+from tileSources import tableCenter
 
 
 class Factory(TileSource):

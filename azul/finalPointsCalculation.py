@@ -1,5 +1,5 @@
 from collections import Counter
-from azul.simple_types import Points
+from simple_types import Points
 from typing import List, Any
 
 
