@@ -32,14 +32,15 @@ class Board:
             if(j < size - 1):
                 self._wall[j].lineDown = self._wall[j + 1]
 
-        self._pattern_line: List[patternLine] = [patternLine(i, self._floor, self.used_tiles, self._wall[i]) for i in range(5)]
-
+        self._pattern_line: List[patternLine] = [patternLine(i + 1 , self._floor, self.used_tiles, self._wall[i]) for i in range(5)]
+        ##CHANGED THE CAPACITY OF PATTERNLINE WAS STARTING AT 0  
     def finishRound(self) -> FinishRoundResult:
         '''zavola finish round z patternline a zapocita vratene body'''
         for line in self._pattern_line:
             self._points = Points.sum([line.finishRound(), self._points])
 
         minus_points = self._floor.finish_round()
+        minus_points._value = -1 * minus_points._value
         self._points = Points.sum([minus_points, self._points])
 
         if GameFinished.verify([wl.getTiles() for wl in self._wall]) == FinishRoundResult.GAME_FINISHED:
@@ -66,8 +67,9 @@ class Board:
             self._pattern_line[destinationIdx].put(tiles)
 
     def endGame(self) -> None:
-        self._points = Points.sum([FinalPointsCalculation.calculate_points(), self._points])
+        self._points = Points.sum([FinalPointsCalculation.calculate_points([x._tilesInLine for x in self._wall]), self._points])
+        ##SHOULD THIS BE += ?
 
     def state(self) -> str:
         """vypise kolko bodov ma dany hrac"""
-        out = f"{self._player_name}: has number of points {str(self._points)}"
+        return f"{self._player_name}: has number of points {str(self._points)}"

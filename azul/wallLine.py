@@ -23,7 +23,7 @@ class WallLine:
     def getTiles(self) -> List[Optional[Tile]]:
         return self._tilesInLine
 
-    def putTile(self, tyle: Tiles) -> Points:
+    def putTile(self, tyle: Tile) -> Points:
         if(not self.canPutTile(tyle)):
             return Points(0)
         
