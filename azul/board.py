@@ -53,6 +53,7 @@ class Board:
     def put(self, destinationIdx: int, tiles: List[Tile]) -> None:
         if not 0 <= destinationIdx <= 4:        #wrong destinationIdx or equal to 5 -> floor
             self._floor.put(tiles)
+            return
 
         if tiles == []:     #uz nie je co vybrat => koncim kolo
             self._is_first = False

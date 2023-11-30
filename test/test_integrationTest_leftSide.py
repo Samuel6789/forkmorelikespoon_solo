@@ -23,21 +23,22 @@ class integrationTest(unittest.TestCase):
         self.assertEqual(self.table.factories[4].state(), "RRBG")
         self.assertEqual(self.bag.state(),"") 
         self.table.take(3, 4)
-        self.assertEqual(self.table.table_Center.state(), "SRB")
+        self.assertEqual(self.table.tableCenter.state(), "SRB")
         self.assertEqual(self.table.factories[3].state(), "")
 
         take_result: List[Tile] = self.bag.take(3) 
-        self.assertEqual(self.usedTiles.state(),"") 
+        self.assertEqual(self.used.state(),"") 
         self.assertEqual(take_result, [GREEN, GREEN, GREEN])
 
         self.table.take(4, 4)
-        self.assertEqual(self.table.table_Center.state(), "SRBRRB")
+        self.assertEqual(self.table.tableCenter.state(), "SRBRRB")
         self.table.take(-1, 1)
         self.assertFalse(self.table.isRoundEnd())
         self.table.take(-1, 2)
-        self.assertEqual(self.table.table_Center.state(), "")
+        self.assertEqual(self.table.tableCenter.state(), "")
         self.assertTrue(self.table.isRoundEnd())
-        self.bag.tiles = [RED, GREEN, BLUE, GREEN, RED, RED, BLUE, GREEN, GREEN, GREEN, GREEN, GREEN, GREEN]
+        self.bag.tiles = [RED, GREEN, BLUE, GREEN, RED, RED, BLUE, GREEN, GREEN, GREEN, GREEN, GREEN]
+        self.bag.tileCount = 12
         self.table.startNewRound()
         self.assertEqual(self.bag.state(), "")
 
