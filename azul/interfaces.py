@@ -2,6 +2,7 @@ from __future__ import annotations
 from typing import List
 from simple_types import Tile
 from simple_types import Points
+from enum import Enum
 
 class UsedTilesGiveInterface:
     def give(self, tiles: List[Tile]) -> None:
@@ -25,3 +26,7 @@ class bagState:
     
     def state(self):
         return "".join([str(x) for x in self.tiles])
+    
+class FinishRoundResult(Enum):
+    NORMAL = True
+    GAME_FINISHED = False
