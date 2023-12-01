@@ -21,7 +21,7 @@ class patternLine():
         if currentCapacity == 0:
             self.floor.put(tiles)
             return
-        while currentCapacity > 0:
+        while currentCapacity > 0 and tiles != []:
             self.line.append(tiles.pop())
             currentCapacity -= 1
         self.floor.put(tiles)

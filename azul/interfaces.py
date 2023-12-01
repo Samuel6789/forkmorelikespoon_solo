@@ -31,3 +31,10 @@ class ObserverInterface:
 class FinishRoundResult(Enum):
     NORMAL = True
     GAME_FINISHED = False
+    
+class gameInterface:
+    def __init__(self) -> None:
+        pass
+
+    def take(self, playerID: int, sourceID: int, colour: int, destinationID: int):
+        pass
